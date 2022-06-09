@@ -1,18 +1,23 @@
 {% extends 'ad/base.html'%}
 
 {% block content %}
-<h1>{{ title }}</h1>
-    <ul>
-        {% for p in posts %}
-        <li>
-            <h2>{{ p.title }}</h2>
-            <p>{{ p.category }}</p>
-            <p>{{ p.description }}</p>
-            <p>{{ p.cost }}</p>
-            <p>{{ p.phone }}</p>
-            <p>{{ p.mail }}</p>
-            <hr>
-        </li>
-        {% endfor %}
-    </ul>
-{% endblock content%}
+<ul class="list-articles">
+	{% for p in posts %}
+			<li><div class="article-panel">
+	<p class="first">Категория: {{p.cat}}</p>
+	<p class="last">Дата: {{p.time_update|date:"d-m-Y"}}</p>
+</div>
+{% if p.photo %}
+	<p><img class="img-article-left thumb" src="{{p.photo.url}}"></p>
+{% endif %}
+				<h2>{{p.title}}</h2>
+                <p>{{ p.category }}</p>
+		        <p>{{ p.description }}</p>
+		        <p>{{ p.cost }}</p>
+		        <p>{{ p.phone }}</p>
+		        <p>{{ p.mail }}</p>
+
+	{% endfor %}
+</ul>
+
+{% endblock %}

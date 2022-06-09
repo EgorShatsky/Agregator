@@ -1,6 +1,9 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from . models import *
+from django.http import HttpResponse, HttpResponseNotFound, Http404
+from django.shortcuts import render, redirect, get_object_or_404
+
+from .forms import *
+from .models import *
+
 
 menu = [{'title': 'Объявления', 'url_name': 'announcement'},
         {'title': 'О сайте', 'url_name': 'about'},
@@ -37,7 +40,19 @@ def login(request):
 
 
 def add_page(request):
-    return render(request, 'ad/add_page.html', {'menu': menu, 'title': 'Добавить объявление'})
+    if request.method == 'POST':
+        form = AddPostForm(request.POST)
+        if form.is_valid():
+            #print(form.cleaned_data)
+            try:
+                Announcement.objects.create(**form.cleaned_data)
+                return redirect('announcement')
+            except:
+                form.add_error(None, 'Ошибка добавления поста')
+
+    else:
+        form = AddPostForm()
+    return render(request, 'ad/add_page.html', {'form': form, 'menu': menu, 'title': 'Добавить объявление'})
 
 
 def show_category(request, cat_id):
