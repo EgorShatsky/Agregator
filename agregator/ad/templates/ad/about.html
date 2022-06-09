@@ -1,6 +1,90 @@
 {% extends 'ad/base.html'%}
+{% load static %}
 
-{% block content %}
-<h1>{{ title }}</h1>
-<p>Содержимое главной страницы</p>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{{title}}</title>
+        <link href="{% static 'ad/css/styles.css' %}" rel="stylesheet" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="shortcut icon" href="{% static 'ad/images/logo.ico' %}" type="{% static 'ad/images/logo.png' %}"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    {% block content %}
+    <body>
+        <h1 class="about-header">О нас</h1>
+        <div class="about-list">
+            <h2 class="about-list_title">
+                Funnya – это доска бизнес-объявлений.
+            </h2>
+            <ul class="about-list_item">
+                <li class="about-item_desc">
+                    На сайте Funnya можно размещать объявления по
+                    бизнес-тематике, как на различных досках объявлений, типа
+                    Авито или Юлы.
+                </li>
+                <li class="about-item_desc">
+                    Помимо размещения объявлений, у нас можно рекламировать
+                    бизнес, создать кабинет Вашей компании с комплексом
+                    предложений.
+                </li>
+                <li class="about-item_desc">
+                    Сайт бизнес-объявлений Funnya посещают тысячи
+                    предпринимателей, топ-менеджеров и деловых людей.
+                </li>
+            </ul>
+        </div>
+        <div class="about-list">
+            <h2 class="about-list_title">Основные разделы сайта:</h2>
+            <ul class="about-list_item">
+                <li class="about-item_desc">Автотовары</li>
+                <li class="about-item_desc">Металлы</li>
+                <li class="about-item_desc">
+                    Компьютеры, бытовая и офисная техника
+                </li>
+                <li class="about-item_desc">Электроника и электротехника</li>
+                <li class="about-item_desc">Одежда</li>
+                <li class="about-item_desc">Обувь</li>
+                <li class="about-item_desc">Игрушки</li>
+                <li class="about-item_desc">Ткань, текстиль</li>
+            </ul>
+        </div>
+        <div class="about-list">
+            <h2 class="about-list_title">Разместить объявление очень легко.</h2>
+            <ol class="about-list_item">
+                <li class="about-item_desc">Надо зарегистрироваться.</li>
+                <li class="about-item_desc">
+                    Заполнить предлагаемые поля объявления.
+                </li>
+            </ol>
+        </div>
+        <div class="about-list wow bounceInRight" style="visibility: visible; animation-name: bounceInRight" >
+            <h2 class="about-list_title">Наши правила и ориентиры в работе:</h2>
+            <ul class="about-list_item">
+                <li class="about-item_desc">
+                    Сайт должен быть понятным и удобным для пользователей.
+                </li>
+                <li class="about-item_desc">
+                    На сайте должны быть востребованные и актуальные категории в
+                    сфере бизнеса.
+                </li>
+                <li class="about-item_desc">
+                    Цены на размещение объявлений должны быть приемлемыми, а
+                    польватели должны быть юридичискими лицами.
+                </li>
+                <li class="about-item_desc">
+                    Контакты, служба поддержки, внимательное отношение к
+                    пожеланиям клиентов, нацеленность на помощь и результат для
+                    клиента.
+                </li>
+            </ul>
+        </div>
+        <h2>Funnya работает с февраля 2022 года.</h2>
+        <script src="{% static 'ad/js/wow.min.js' %}"></script>
+            <script>
+                new WOW().init();
+            </script>
+    </body>
+</html>
+
 {% endblock content%}
